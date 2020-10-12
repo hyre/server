@@ -47,6 +47,7 @@ class Dev(User):
 
 class Hr(User):
     base_type = User.Types.HR
+    User.base_type = base_type
     objects = HrManager()
 
     class Meta:
