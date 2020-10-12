@@ -3,7 +3,7 @@ from django.contrib.auth import admin as auth_admin
 from django.contrib.auth import get_user_model
 
 from user.forms import UserChangeForm, UserCreationForm
-
+from user.models import Dev,Hr,DevBio 
 
 User = get_user_model()
 
@@ -17,3 +17,7 @@ class UserAdmin(auth_admin.UserAdmin):
     ) + auth_admin.UserAdmin.fieldsets
     list_display = ["username","name","is_superuser","type"]
     search_fields = ["name"]
+
+admin.site.register(Dev)
+admin.site.register(Hr)
+admin.site.register(DevBio)

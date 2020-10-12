@@ -30,10 +30,6 @@ class DevManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
         return super().get_queryset(*args, **kwargs).filter(type=User.Types.DEV)
 
-class DevBio(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500)
-
 class Dev(User):
     base_type = User.Types.DEV
     objects = DevManager()
@@ -47,9 +43,11 @@ class Dev(User):
 
 class Hr(User):
     base_type = User.Types.HR
-    User.base_type = base_type
     objects = HrManager()
 
     class Meta:
         proxy = True
 
+class DevBio(models.Model):
+    user = models.OneToOneField(Dev, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500)
