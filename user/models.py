@@ -40,6 +40,7 @@ class Dev(User):
 
     class Meta:
         proxy = True
+    
 
 class Hr(User):
     base_type = User.Types.HR
@@ -47,7 +48,12 @@ class Hr(User):
 
     class Meta:
         proxy = True
+    
+    
 
-class DevBio(models.Model):
+class Bio(models.Model):
     user = models.OneToOneField(Dev, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500)
+
+    def __str__(self):
+        return f"{self.user}'s bio"
