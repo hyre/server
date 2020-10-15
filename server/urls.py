@@ -18,9 +18,10 @@ from django.urls import path
 import user.views as user_views
 import company.views as company_views
 
-
 urlpatterns = [
     path('',user_views.home,name='home'),
     path('admin/', admin.site.urls),
+    path('login/',user_views.auth_login, name='login'),
+    path('logout/',user_views.logout, name='logout'),
     path('signup/',user_views.signup,name='signup')
 ]

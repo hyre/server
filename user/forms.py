@@ -46,3 +46,7 @@ class HyreSignupForm(SignupForm):
         def custom_signup(self, request, user):
             user.type = self.cleaned_data['type']
             user.save()
+
+
+
+
