@@ -16,10 +16,10 @@ class User(AbstractUser):
 
     name = models.CharField(_("Name of the user"), blank=True, max_length=255)
 
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.type = self.base_type
-        return super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.id:
+    #         self.type = self.base_type
+    #     return super().save(*args, **kwargs)
 
 
 class HrManager(models.Manager):

@@ -21,6 +21,7 @@ class UserCreationForm(forms.UserCreationForm):
     
     class Meta(forms.UserCreationForm.Meta):
         model = User
+        fields = {"username","email","name","type","password1","password2"}
 
     def clean_username(self):
         username = self.cleaned_data['username']
@@ -32,6 +33,8 @@ class UserCreationForm(forms.UserCreationForm):
         raise ValidationError(
             self.error_messages["duplicate_username"]
     )
+
+
 
 class HyreSignupForm(SignupForm):
     type = d_forms.ChoiceField(choices=[("HR","Hr"),("DEV","Dev")])
