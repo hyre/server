@@ -46,3 +46,7 @@ def auth_login(request):
     else:
         form = AuthenticationForm()
         return render(request,'login.html',{'form':form})
+
+def auth_logout(request):
+    logout(request)
+    return redirect('home')
