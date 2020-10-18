@@ -54,8 +54,7 @@ def auth_logout(request):
 
 def user_profile(request,username):
     user = Dev.objects.all().filter(username=username)
-    print(user.exists())
     if not user.exists():
         return redirect('home')
-    return HttpResponse(user[0].bio)
+    return render(request,'profile.html',{'user':user})
 
