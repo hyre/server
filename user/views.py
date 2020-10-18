@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from user.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
-from user.models import Dev
+from user.models import Dev, Bio, Skill, Project
 
 def home(request):
     return render(request,'base.html')
@@ -57,5 +57,5 @@ def user_profile(request,username):
     print(user.exists())
     if not user.exists():
         return redirect('home')
-    return HttpResponse(user)
+    return HttpResponse(user[0].bio)
 

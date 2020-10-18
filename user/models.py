@@ -34,9 +34,6 @@ class Dev(User):
     base_type = User.Types.DEV
     objects = DevManager()
 
-    @property
-    def bio(self):
-        return self.bio
 
     class Meta:
         proxy = True
