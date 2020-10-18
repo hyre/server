@@ -36,7 +36,7 @@ class Dev(User):
 
     @property
     def bio(self):
-        return self.devbio
+        return self.bio
 
     class Meta:
         proxy = True
