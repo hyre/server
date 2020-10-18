@@ -57,3 +57,22 @@ class Bio(models.Model):
 
     def __str__(self):
         return f"{self.user}'s bio"
+
+class Skill(models.Model):
+    user = models.OneToOneField(Dev, on_delete=models.CASCADE)
+    skill_string = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return f"{self.user}"
+
+class Project(models.Model):
+    user = models.ForeignKey(Dev, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    link = models.URLField()
+    desc = models.TextField(max_length=1000)
+
+    def __str__(self):
+        return f"{self.user} - {self.name}"
+
+
+    
