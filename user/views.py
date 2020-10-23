@@ -58,3 +58,5 @@ def user_profile(request,username):
         return redirect('home')
     return render(request,'profile.html',{'user':user})
 
+def user_profile_edit(request):
+    

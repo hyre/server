@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model, forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
-
+from user.models import Bio, Skill, Project
 from django import forms as d_forms
 from allauth.account.forms import SignupForm
 
@@ -50,3 +50,17 @@ class HyreSignupForm(SignupForm):
 
 
 
+class BioForm(d_forms):
+    class Meta:
+        model = Bio
+        fields = ['bio']
+
+class SkillForm(d_forms):
+    class Meta:
+        model = Skill
+        fields = ['skill_string']
+
+class ProjectForm(d_forms):
+    class Meta:
+        model = Project
+        fields = ['name','link','desc']
