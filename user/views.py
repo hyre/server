@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, authenticate, logout
-from user.forms import UserCreationForm #BioForm, SkillForm, ProjectForm
-from django.contrib.auth.forms import AuthenticationForm
+from user.forms import UserCreationForm, AuthForm #BioForm, SkillForm, ProjectForm
 from user.models import Dev, Bio, Skill, Project
 from django.contrib.auth.decorators import login_required
 
@@ -29,7 +28,7 @@ def auth_login(request):
     if request.user.is_authenticated:
         return redirect('home')
     elif request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
+        form = AuthForm(data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             raw_password  = form.cleaned_data.get('password')
@@ -47,7 +46,7 @@ def auth_login(request):
             else:
                 redirect('home')
     else:
-        form = AuthenticationForm()
+        form = AuthForm()
         return render(request,'login.html',{'form':form})
 
 def auth_logout(request):
