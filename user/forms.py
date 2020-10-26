@@ -35,7 +35,6 @@ class UserCreationForm(forms.UserCreationForm):
     )
 
 
-
 class HyreSignupForm(SignupForm):
     type = d_forms.ChoiceField(choices=[("HR","Hr"),("DEV","Dev")])
 
@@ -48,19 +47,17 @@ class HyreSignupForm(SignupForm):
             user.save()
 
 
+# class BioForm(d_forms):
+#     class Meta:
+#         model = Bio
+#         fields = ['bio']
 
+# class SkillForm(d_forms):
+#     class Meta:
+#         model = Skill
+#         fields = ['skill_string']
 
-class BioForm(d_forms):
-    class Meta:
-        model = Bio
-        fields = ['bio']
-
-class SkillForm(d_forms):
-    class Meta:
-        model = Skill
-        fields = ['skill_string']
-
-class ProjectForm(d_forms):
-    class Meta:
-        model = Project
-        fields = ['name','link','desc']
+# class ProjectForm(d_forms):
+#     class Meta:
+#         model = Project
+#         fields = ['name','link','desc']

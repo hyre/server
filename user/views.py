@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, authenticate, logout
-from user.forms import UserCreationForm
+from user.forms import UserCreationForm #BioForm, SkillForm, ProjectForm
 from django.contrib.auth.forms import AuthenticationForm
 from user.models import Dev, Bio, Skill, Project
+from django.contrib.auth.decorators import login_required
+
 
 def home(request):
     return render(request,'base.html')
@@ -58,5 +60,7 @@ def user_profile(request,username):
         return redirect('home')
     return render(request,'profile.html',{'user':user})
 
-def user_profile_edit(request):
+# @login_required
+# def user_profile_edit(request):
+    
     
