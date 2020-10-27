@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from user.forms import UserCreationForm, AuthForm #BioForm, SkillForm, ProjectForm
-from user.models import Dev, Bio, Skill, Project
+from user.models import Dev, Bio, Skill, Project, User
 from company.models import Job, Application
 from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 def home(request):
@@ -59,12 +60,18 @@ def user_profile(request,username):
     user = Dev.objects.all().filter(username=username)
     if not user.exists():
         return redirect('home')
-    return render(request,'profile.html',{'user':user})
+
+    user_base = User.objects.all().filter(username=username)[0]
+    bio = user[0].bio.bio
+    skills = user[0].skill.skill_string.split(',')
+    projects = Project.objects.all().filter(user=user[0])
+    return render(request,'profile.html',{'user_base':user_base,'user':user,'bio':bio,'skills':skills,'projects':projects})
 
 # @login_required
 # def user_profile_edit(request):
 
 class JobListView(LoginRequiredMixin,ListView):
+    ''' CUrrently all users can view posted jobs => limit this to dev users'''
     model = Job
     paginate_by = 10
     template_name = 'job_list.html'
