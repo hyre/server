@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from user.forms import UserCreationForm, AuthForm #BioForm, SkillForm, ProjectForm
 from user.models import Dev, Bio, Skill, Project
+from company.models import Job, Application
 from django.contrib.auth.decorators import login_required
+from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def home(request):
@@ -60,5 +63,10 @@ def user_profile(request,username):
 
 # @login_required
 # def user_profile_edit(request):
-    
+
+class JobListView(LoginRequiredMixin,ListView):
+    model = Job
+    paginate_by = 10
+    template_name = 'job_list.html'
+
     
