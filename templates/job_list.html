@@ -1,5 +1,5 @@
 {% for job in object_list %}
     {{ job.title }}<br>
     {{ job.company }}
-    <button>View Job</button>
+    <button><a href="{% url 'job-apply' id=job.id %}">View Job</a></button>
 {% endfor %}

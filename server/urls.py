@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', user_views.auth_login, name='login'),
     path('jobs/', user_views.JobListView.as_view(),name='job-list'),
+    path('jobs/apply/<int:id>', user_views.job_apply, name='job-apply'),
     path('logout/', user_views.auth_logout, name='logout'),
     path('signup/', user_views.signup, name='signup'),
     path('user/<username>/', user_views.user_profile, name='profile')

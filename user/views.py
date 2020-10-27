@@ -76,4 +76,7 @@ class JobListView(LoginRequiredMixin,ListView):
     paginate_by = 10
     template_name = 'job_list.html'
 
-    
+@login_required
+def job_apply(request,id):
+    print(request.user)
+    return redirect('home')
