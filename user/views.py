@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, authenticate, logout
-from user.forms import UserCreationForm, AuthForm #BioForm, SkillForm, ProjectForm
+from user.forms import UserCreationForm, AuthForm,BioForm, SkillForm, ProjectForm
 from user.models import Dev, Bio, Skill, Project, User
-from company.models import Job, Application
+from company.forms import ApplicationForm
+from company.models import Job
 from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -22,10 +23,37 @@ def signup(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
-            return redirect('login')
+            login(request,user)
+            if(user.type=='DEV'):
+                return redirect('update')
+            else:
+                return hr_login(request)
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
+
+@login_required
+def profile_update(request):
+    if(request.user.type=='DEV'):
+        if request.method == 'POST':
+            bio = BioForm(request.POST,initial={'user': request.user})
+            skills = SkillForm(request.POST,initial={'user': request.user})
+            if skills.is_valid and bio.is_valid:
+                skills.save()
+                bio.save()
+                return redirect('home')
+        else:
+            bio = BioForm(initial={'user': request.user})
+            skills = SkillForm(initial={'user': request.user})
+        return render(request, 'devdash.html',{'bio':bio, 'skills':skills})
+    else:
+        return HttpResponse('404')
+
+# Create a view to add projects
+
+
+def hr_login(request):
+    return render(request,'hrdash.html')
 
 def auth_login(request):
     if request.user.is_authenticated:
@@ -36,14 +64,13 @@ def auth_login(request):
             username = form.cleaned_data.get('username')
             raw_password  = form.cleaned_data.get('password')
             user = authenticate(username=username,password=raw_password)
-            print(user)
             if user is not None:
                 if user.type == 'DEV':
                     login(request,user)
-                    return render(request, 'devdash.html')
+                    return redirect('home')
                 elif user.type == 'HR':
                     login(request,user)
-                    return render(request,'hrdash.html')
+                    return hr_login(request)
                 else:
                     redirect('home')
             else:

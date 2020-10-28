@@ -28,5 +28,6 @@ urlpatterns = [
     path('jobs/apply/<int:id>', user_views.job_apply, name='job-apply'),
     path('logout/', user_views.auth_logout, name='logout'),
     path('signup/', user_views.signup, name='signup'),
-    path('user/<username>/', user_views.user_profile, name='profile')
+    path('user/u/<username>/', user_views.user_profile, name='profile'),
+    path('user/update', user_views.profile_update, name='update')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

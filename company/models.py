@@ -27,7 +27,7 @@ class Job(models.Model):
 class Application(models.Model):
     job_name = models.ForeignKey(Job, related_name="applications", on_delete=models.CASCADE)
     candidate = models.OneToOneField(Dev, related_name="application", on_delete=models.CASCADE)
-    status = models.CharField(max_length=100) # Application Status
+    has_applied = models.BooleanField() # Application Status
 
     def __str__(self):
         return f"Application for {self.job_name} by {self.candidate}"

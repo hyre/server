@@ -1,1 +1,9 @@
-<h1>DEV DASH</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ bio }}
+    {{ skills }}
+    
+    <button type="submit">Submit</button>
+
+</form>
