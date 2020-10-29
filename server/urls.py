@@ -26,6 +26,7 @@ urlpatterns = [
     path('login/', user_views.auth_login, name='login'),
     path('jobs/', user_views.JobListView.as_view(),name='job-list'),
     path('jobs/apply/<int:id>', user_views.job_apply, name='job-apply'),
+    path('jobs/applications',user_views.applied_jobs,name='applications'),
     path('logout/', user_views.auth_logout, name='logout'),
     path('signup/', user_views.signup, name='signup'),
     path('user/u/<username>/', user_views.user_profile, name='profile'),
