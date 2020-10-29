@@ -1,0 +1,8 @@
+{{ job.title }}<br>
+{{ job.company }}<br>
+{{ job.des }}<br>
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Apply</button>
+</form>

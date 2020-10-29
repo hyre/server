@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, authenticate, logout
-from user.forms import UserCreationForm, AuthForm,BioForm, SkillForm, ProjectForm
+from user.forms import UserCreationForm, AuthForm,BioForm, SkillForm
 from user.models import Dev, Bio, Skill, Project, User
 from company.forms import ApplicationForm
-from company.models import Job
+from company.models import Job, Application
 from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -105,5 +105,12 @@ class JobListView(LoginRequiredMixin,ListView):
 
 @login_required
 def job_apply(request,id):
-    print(request.user)
-    return redirect('home')
+    job = Job.objects.all().filter(id=id)
+    if(request.method == 'POST'):
+        form = ApplicationForm(request.POST,initial={'job_name':job[0],'candidate':request.user,'has_applied':True})
+        if form.is_valid:
+            form.save()
+            return HttpResponse("Successfully Applied")
+    else:
+        form = ApplicationForm(initial={'job_name':job[0],'candidate':request.user,'has_applied':False})
+    return render(request,'application.html',{'form':form,'job':job[0]})

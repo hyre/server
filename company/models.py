@@ -15,11 +15,11 @@ class Job(models.Model):
     title = models.CharField(max_length=100)
     des = models.TextField(max_length=500)
     company = models.ForeignKey(Company,on_delete=models.CASCADE)
-    posted_by = models.OneToOneField(Hr, on_delete=models.CASCADE)
+    posted_by = models.ForeignKey(Hr, on_delete=models.CASCADE)
     applicants = models.ManyToManyField(Dev,related_name="applied_jobs", blank=True)
 
     def __repr__(self):
-        return self.company + ": " + self.title
+        return f"{self.company}: {self.title}"
 
     def __str__(self):
         return f"{self.title} opening in {self.company}"
