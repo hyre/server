@@ -41,7 +41,7 @@ def profile_update(request):
             if skills.is_valid and bio.is_valid:
                 skills.save()
                 bio.save()
-                return redirect('profile')
+                return user_profile(request,request.user.username)
         else:
             bio = BioForm(initial={'user': request.user})
             skills = SkillForm(initial={'user': request.user})
@@ -67,7 +67,7 @@ def auth_login(request):
             if user is not None:
                 if user.type == 'DEV':
                     login(request,user)
-                    return redirect('home')
+                    return user_profile(request,user.username)
                 elif user.type == 'HR':
                     login(request,user)
                     return hr_login(request)
