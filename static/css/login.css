@@ -18,3 +18,11 @@ body {
 .text-brand-light-blue {
     color: var(--light-blue);
 }
+
+.bg-brand-yellow {
+    background-color: var(--yellow);
+}
+
+.border-none {
+    border: none;
+}

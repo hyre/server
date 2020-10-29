@@ -2,4 +2,39 @@
     --light-blue: #4E6DF9;
     --dark-blue: #101935;
     --yellow: #F9C80E;
+    --white: #DFDFDF;
+    --light-green: #23CE6B;
+    --lighter-blue: #BAD0F5;
+}
+
+.text-brand-yellow {
+    color: var(--yellow);
+}
+
+.text-brand-light-blue {
+    color: var(--light-blue);
+}
+
+.text-brand-white {
+    color: var(--white);
+}
+
+.text-bold {
+    font-weight: 600;
+}
+
+.text-bolder {
+    font-weight: 700;
+}
+
+.text-boldest {
+    font-weight: 800;
+}
+
+.bg-brand-yellow {
+    background-color: var(--yellow);
+}
+
+.border-none {
+    border: none;
 }

@@ -36,16 +36,16 @@ def signup(request):
 def profile_update(request):
     if(request.user.type=='DEV'):
         if request.method == 'POST':
-            bio = BioForm(request.POST,initial={'user': request.user})
-            skills = SkillForm(request.POST,initial={'user': request.user})
+            bio = BioForm(request.POST)
+            skills = SkillForm(request.POST)
             if skills.is_valid and bio.is_valid:
                 skills.save()
                 bio.save()
-                return redirect('home')
+                return redirect('profile')
         else:
             bio = BioForm(initial={'user': request.user})
             skills = SkillForm(initial={'user': request.user})
-        return render(request, 'devdash.html',{'bio':bio, 'skills':skills})
+        return render(request, 'create_profile.html',{'bio':bio, 'skills':skills})
     else:
         return HttpResponse('404')
 
@@ -89,7 +89,7 @@ def user_profile(request,username):
         return redirect('home')
 
     user_base = User.objects.all().filter(username=username)[0]
-    bio = user[0].bio.bio
+    bio = user[0].bio
     skills = user[0].skill.skill_string.split(',')
     projects = Project.objects.all().filter(user=user[0])
     return render(request,'profile.html',{'user_base':user_base,'user':user,'bio':bio,'skills':skills,'projects':projects})

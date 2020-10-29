@@ -59,14 +59,16 @@ class AuthForm(AuthenticationForm):
 class BioForm(d_forms.ModelForm):
     class Meta:
         model = Bio
-        fields = ['bio','user']
+        fields = ['bio','user', 'age', 'city', 'country']
 
 class SkillForm(d_forms.ModelForm):
     class Meta:
         model = Skill
         fields = ['skill_string','user']
+   
 
 class ProjectForm(d_forms.ModelForm):
     class Meta:
         model = Project
         fields = ['name','link','desc','user']
+    

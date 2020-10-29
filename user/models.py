@@ -51,13 +51,16 @@ class Hr(User):
 class Bio(models.Model):
     user = models.OneToOneField(Dev, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500)
+    age = models.IntegerField()
+    country = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.user}'s bio"
 
 class Skill(models.Model):
     user = models.OneToOneField(Dev, on_delete=models.CASCADE)
-    skill_string = models.CharField(max_length=1000)
+    skill_string = models.TextField(max_length=1000)
 
     def __str__(self):
         return f"{self.user}"
