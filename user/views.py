@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from user.forms import UserCreationForm, AuthForm,BioForm, SkillForm
 from user.models import Dev, Bio, Skill, Project, User
-from company.forms import ApplicationForm
+from company.forms import ApplicationForm, HRBioForm
 from company.models import Job, Application
 from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
@@ -27,7 +27,7 @@ def signup(request):
             if(user.type=='DEV'):
                 return redirect('update')
             else:
-                return hr_login(request)
+                return redirect('update')
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
@@ -47,7 +47,14 @@ def profile_update(request):
             skills = SkillForm(initial={'user': request.user})
         return render(request, 'create_profile.html',{'bio':bio, 'skills':skills})
     else:
-        return HttpResponse('404')
+        if request.method =='POST':
+            hrbio  = HRBioForm(request.POST)
+            if hrbio.is_valid:
+                hrbio.save()
+                return redirect('home')
+        else:
+            hrbio = HRBioForm(initial={'user': request.user})
+        return render(request,'create_hr_profile.html',{'hrbio':hrbio})
 
 # Create a view to add projects
 

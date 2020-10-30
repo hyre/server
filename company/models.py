@@ -1,6 +1,7 @@
 from django.db import models
 from user.models import Dev, Hr
 # Create your models here.
+
 class Company(models.Model):
     name = models.CharField(max_length=100)
     desc = models.TextField(max_length=200)
@@ -31,3 +32,9 @@ class Application(models.Model):
 
     def __str__(self):
         return f"Application for {self.job_name} by {self.candidate}"
+
+
+class HR_bio(models.Model):
+    user = models.OneToOneField(Hr, on_delete=models.CASCADE)
+    works_for = models.ForeignKey(Company,related_name='company',on_delete=models.CASCADE)
+    location = models.CharField(max_length=1000)
