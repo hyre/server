@@ -107,21 +107,30 @@ class JobListView(LoginRequiredMixin,ListView):
 def job_apply(request,id):
     ''' check if application exists if it does then already applied if not then show'''
     job = Job.objects.all().filter(id=id)
-    if(application.has_applied):
-        return HttpResponse("Already Applied!")
+    if(request.method == 'POST'):
+        application = Application()
+        application.job_name = job[0]
+        application.candidate = request.user
+        application.has_applied = True
+        application.save()
+        return render(request,'application.html')
     else:
-        if(request.method == 'POST'):
-            application = Application()
+        application = Application.objects.all().filter(job_name=job[0])
+        current_application = [i for i in application if i.candidate == request.user]
+        try:
+            if(current_application[0].has_applied):
+                return HttpResponse("Already Applied!")
+        except:
             application.job_name = job[0]
             application.candidate = request.user
-            application.has_applied = True
-    return render(request,'application.html',{'job':job[0]})
+            return render(request,'application.html',{'job':job[0]})
+        
 
 @login_required
 def applied_jobs(request):
     applications = Application.objects.all()
-    array = []
+    applied = []
     for i in applications:
-        if i.candidate == request.user.username:
-            array.append(i)
-    return render(request,'applied_jobs.html',{'applications':array})
+        if i.candidate.username == request.user.username:
+            applied.append(i)
+    return render(request,'applied_jobs.html',{'applied':applied})

@@ -1,3 +1,4 @@
+{% if job %}
 {{ job.title }}<br>
 {{ job.company }}<br>
 {{ job.des }}<br>
@@ -6,3 +7,6 @@
     {{ form }}
     <button type="submit">Apply</button>
 </form>
+{% else %}
+Applicatio Success
+{% endif %}

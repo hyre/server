@@ -1,1 +1,5 @@
-{{application}}
+{% for i in applied %}
+    {{ i.job_name }}<br>
+    {{ i.job_name.company }}
+    <br><br>
+{% endfor %}
