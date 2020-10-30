@@ -7,7 +7,7 @@ from company.models import Job, Application
 from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from company.views import dashboard
 
 
 def home(request):
@@ -50,8 +50,9 @@ def profile_update(request):
         if request.method =='POST':
             hrbio  = HRBioForm(request.POST)
             if hrbio.is_valid:
+                username = request.user.username
                 hrbio.save()
-                return redirect('home')
+                return dashboard(request,username)
         else:
             hrbio = HRBioForm(initial={'user': request.user})
         return render(request,'create_hr_profile.html',{'hrbio':hrbio})
@@ -59,8 +60,6 @@ def profile_update(request):
 # Create a view to add projects
 
 
-def hr_login(request):
-    return render(request,'hrdash.html')
 
 def auth_login(request):
     if request.user.is_authenticated:
@@ -77,7 +76,7 @@ def auth_login(request):
                     return user_profile(request,user.username)
                 elif user.type == 'HR':
                     login(request,user)
-                    return hr_login(request)
+                    return dashboard(request,user.username)
                 else:
                     redirect('home')
             else:
