@@ -1,5 +1,5 @@
 from django import forms
-from company.models import Application, HR_bio
+from company.models import Application, HR_bio, Job
 
 class ApplicationForm(forms.ModelForm):
     class Meta:
@@ -10,3 +10,8 @@ class HRBioForm(forms.ModelForm):
     class Meta:
         model = HR_bio
         fields = ['user','works_for','location']
+
+class JobForm(forms.ModelForm):
+    class Meta:
+        model = Job
+        fields = ['title','des','company','posted_by']
