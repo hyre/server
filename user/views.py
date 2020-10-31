@@ -59,8 +59,13 @@ def profile_update(request):
 
 @login_required
 def add_project(request):
-    form = ProjectForm()
-    return render(request,'add_project.html')
+    if(request.method=='POST'):
+        form = ProjectForm(request.POST)
+        if form.is_valid:
+            form.save()
+            return user_profile(request,request.user.username)
+    form = ProjectForm(initial={'user':request.user})
+    return render(request,'add_project.html',{'form':form})
 
 
 

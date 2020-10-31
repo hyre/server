@@ -33,27 +33,32 @@
         <p class="lead text-center text-light">Enter project details</p>
         <div class="row justify-content-center min-vh-100 px-3">
             <div class="col-lg-3 col-md-9 col-sm-12 m-auto">
-                <form class="d-flex flex-column justify-content-center">
+
+                <form class="d-flex flex-column justify-content-center" method="POST">
+                    {% csrf_token %}
                     <div class="form-group text-brand-yellow">
                         <label for="name">Project Name</label>
-                        <input type="text" class="form-control text-light" id="name">
+                        <input type="text" class="form-control text-light" id="name" name="{{ form.name.name }}">
                     </div>
 
                     <div class="form-group text-brand-yellow">
                         <label for="name">Project Link</label>
-                        <input type="url" class="form-control text-light" id="name">
+                        <input type="url" class="form-control text-light" id="name" name="{{ form.link.name }}">
                     </div>
                     <div class="form-group text-brand-yellow">
                         <label for="skills">Project Description</label>
                         <small id="skills" class="form-text text-muted">
                             Use least words to describe the project
                         </small>
-                        <textarea name="skills" class="form-control text-white" id="bio" rows="10"></textarea>
+                        <textarea class="form-control text-white" id="bio" rows="10" name="{{ form.desc.name }}"></textarea>
                     </div>
-
+                    <select name="{{ form.user.name }}" required id="id_user" hidden>
+                        <option value="{{ form.user.value }}" selected></option>
+                    </select> 
 
                     <button type="submit" class="btn btn-primary align-self-center">Add</button>
                 </form>
+
             </div>
         </div>
     </div>
