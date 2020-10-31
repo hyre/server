@@ -1,0 +1,4 @@
+{% for application in applications %}
+{{ application.candidate }}
+<a href="{% url 'profile' username=application.candidate.username %}">View Profile</a>
+{% endfor %}

@@ -1,0 +1,5 @@
+{% for job in jobs %}
+    {{ job }}
+    <a href="{% url 'view-application' id=job.id %}">View Application</a>
+    <br>
+{% endfor %}
