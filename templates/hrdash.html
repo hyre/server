@@ -23,7 +23,23 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
                 <a class="nav-link" href="{% url 'create-job' %}">Create</a>
+                <a class="nav-link" href="{% url 'posted-jobs' %}">Posted Jobs</a>
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </div>
         </div>
     </nav>
+    <br>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="search">
+            <button type="submit">Search</button>
+        </form>
+        <div style="color: white;">
+            {{ dev.0.username }}
+            {% for username in usernames %}
+                {{ username }}<br>
+            {% endfor %}
+        </div>
+    </div>
+</body>

@@ -2,10 +2,20 @@ from django.shortcuts import render, HttpResponse
 from company.forms import JobForm
 from company.models import HR_bio, Application,Job
 from django.contrib.auth.decorators import login_required
-
+from user.models import Dev, Skill
 
 @login_required
 def dashboard(request,username):
+    if(request.method=="POST"):
+        query = request.POST['search']
+        dev = Dev.objects.all().filter(username=query)
+        res = Skill.objects.all()
+        usernames = []
+        for i in res:
+            if(query in i.skill_string.split(',')):
+                usernames.append(i.user.username)
+        print(usernames)
+        return render(request,'hrdash.html',{'dev':dev,'usernames':usernames})
     return render(request, 'hrdash.html')
 
 @login_required
