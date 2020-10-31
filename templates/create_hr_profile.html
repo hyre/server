@@ -38,7 +38,11 @@
                     
                     <div class="form-group text-brand-yellow">
                     <label for="name">Company</label>
-                        {{ hrbio.works_for }}
+                        <select class="form-control text-light" name="{{ hrbio.works_for.name }}" id="name">
+                            {% for x,y in hrbio.fields.works_for.choices %}
+                            <option id="name" class="form-control text-light"  value="{{ x }}">{{ y }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="form-group text-brand-yellow">
                         <label>Contact us if your company is not in the list</label>
