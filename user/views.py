@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, authenticate, logout
-from user.forms import UserCreationForm, AuthForm,BioForm, SkillForm
+from user.forms import UserCreationForm, AuthForm,BioForm, SkillForm,ProjectForm
 from user.models import Dev, Bio, Skill, Project, User
 from company.forms import ApplicationForm, HRBioForm
 from company.models import Job, Application
@@ -57,7 +57,11 @@ def profile_update(request):
             hrbio = HRBioForm(initial={'user': request.user})
         return render(request,'create_hr_profile.html',{'hrbio':hrbio})
 
-# Create a view to add projects
+@login_required
+def add_project(request):
+    form = ProjectForm()
+    return render(request,'add_project.html')
+
 
 
 

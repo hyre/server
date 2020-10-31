@@ -30,6 +30,7 @@ urlpatterns = [
     path('jobs/apply/<int:id>', user_views.job_apply, name='job-apply'),
     path('jobs/applications',user_views.applied_jobs,name='applications'),
     path('logout/', user_views.auth_logout, name='logout'),
+    path('project/add',user_views.add_project,name='add-project'),
     path('signup/', user_views.signup, name='signup'),
     path('user/u/<username>/', user_views.user_profile, name='profile'),
     path('user/update', user_views.profile_update, name='update')

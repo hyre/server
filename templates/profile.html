@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <title>hyre - profile</title>
 </head>
@@ -103,8 +104,13 @@
                 <h2>No Projects Yet!</h2>
             </div>
             {% endif %}
+            <a href="{% url 'add-project' %}" class="project__add-btn">
+                <i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
+            </a>
         </div>
     </div>
+
+
     <footer class="footer mt-auto py-3">
         <div class="container">
             <div class="row row-cols-3 justify-content-space-between">
