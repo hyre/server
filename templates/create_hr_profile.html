@@ -38,9 +38,9 @@
                     
                     <div class="form-group text-brand-yellow">
                     <label for="name">Company</label>
-                        <select class="form-control text-light" name="{{ hrbio.works_for.name }}" id="name">
+                        <select class="company__select form-control text-light" name="{{ hrbio.works_for.name }}" id="name">
                             {% for x,y in hrbio.fields.works_for.choices %}
-                            <option id="name" class="form-control text-light"  value="{{ x }}">{{ y }}</option>
+                            <option id="name" class="company__select form-control text-light"  value="{{ x }}">{{ y }}</option>
                             {% endfor %}
                         </select>
                     </div>

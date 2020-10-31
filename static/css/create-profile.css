@@ -24,3 +24,30 @@ textarea.form-control:focus {
     background-color: var(--light-blue);
     margin-top: auto;
 }
+
+.company__select {
+    display: block;
+    padding: 1rem 2rem;
+    max-width: 100%;
+    height: auto;
+    border-radius: 3px;
+    outline: none;
+    text-decoration: none;
+    border: none;
+    background-color: rgba(78, 109, 249, 0.13);
+    color: white;
+    border-radius: 3px;
+    appearance: none;
+    /* this is must */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+  .select option{
+    background: rgba(78, 109, 249, 0.13);
+    color: black;
+  }
+  
+  select::-ms-expand {
+      display: none; /* remove default arrow on ie10 and ie11 */
+  }
