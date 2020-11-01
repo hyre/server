@@ -52,7 +52,7 @@ def profile_update(request):
             if hrbio.is_valid:
                 username = request.user.username
                 hrbio.save()
-                return dashboard(request,username)
+                return redirect('dashboard',username=username)
         else:
             hrbio = HRBioForm(initial={'user': request.user})
         return render(request,'create_hr_profile.html',{'hrbio':hrbio})
