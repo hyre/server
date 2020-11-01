@@ -24,7 +24,7 @@ def post_jobs(request):
         form = JobForm(request.POST)
         if(form.is_valid):
             form.save()
-            return HttpResponse("Created")
+            return render(request,'application.html',{'message':'Job posting has been created!'})
     company = HR_bio.objects.all().filter(user=request.user)[0].works_for
     form = JobForm(initial={'company':company,'posted_by':request.user})
     return render(request,'create_job.html',{'form':form})
