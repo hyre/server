@@ -11,7 +11,7 @@ from company.views import dashboard
 
 
 def home(request):
-    return render(request,'base.html')
+    return render(request,'index.html')
 
 def signup(request):
     if request.user.is_authenticated:
@@ -82,7 +82,7 @@ def auth_login(request):
             if user is not None:
                 if user.type == 'DEV':
                     login(request,user)
-                    return user_profile(request,user.username)
+                    return redirect('profile',username=user.username)
                 elif user.type == 'HR':
                     login(request,user)
                     return redirect('dashboard',username=user.username)
@@ -128,13 +128,13 @@ def job_apply(request,id):
         application.candidate = request.user
         application.has_applied = True
         application.save()
-        return render(request,'application.html')
+        return render(request,'application.html',{'message':'Application Success!'})
     else:
         application = Application.objects.all().filter(job_name=job[0])
         current_application = [i for i in application if i.candidate == request.user]
         try:
             if(current_application[0].has_applied):
-                return HttpResponse("Already Applied!")
+                return render(request,'application.html',{'message':'You have already applied to this post!'})
         except:
             application.job_name = job[0]
             application.candidate = request.user
