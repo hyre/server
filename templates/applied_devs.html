@@ -20,8 +20,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-link" href="#">Login</a>
-                <a class="nav-link" href="/signup.html">Sign Up</a>
+                <a class="nav-link" href="{% url 'dashboard' username=user.username %}">Dashboard</a>
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </div>
         </div>
     </nav>

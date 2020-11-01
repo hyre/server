@@ -19,9 +19,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
+            {% if user.type == 'DEV' %}
             <a class="nav-link" href="{% url 'profile' username=user.username %}">Profile</a>
             <a class="nav-link" href="{% url 'applications' %}">Applied</a>
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a class="nav-link" href="{% url 'dashboard' username=user.username %}">Dashboard</a>
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            {% endif %}
         </div>
     </div>
 </nav>
@@ -33,7 +38,11 @@
         <div class="job">
             <h5 class="job__title">{{ job.title }}</h5>
             <p class="job__company">{{ job.company }}</p>
+            {% if user.type == 'DEV' %}
             <a href="{% url 'job-apply' id=job.id %}" class="btn job__view-button">View</a> 
+            {% else %}
+            <a href="{% url 'login' %}" class="btn job__view-button" disabled>You can not apply using a HR account</a> 
+            {% endif %}
         </div>
         {% endfor %}
     </div>

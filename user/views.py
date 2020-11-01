@@ -122,31 +122,37 @@ class JobListView(LoginRequiredMixin,ListView):
 @login_required
 def job_apply(request,id):
     ''' check if application exists if it does then already applied if not then show'''
-    job = Job.objects.all().filter(id=id)
-    if(request.method == 'POST'):
-        application = Application()
-        application.job_name = job[0]
-        application.candidate = request.user
-        application.has_applied = True
-        application.save()
-        return render(request,'application.html',{'message':'Application Success!'})
-    else:
-        application = Application.objects.all().filter(job_name=job[0])
-        current_application = [i for i in application if i.candidate == request.user]
-        try:
-            if(current_application[0].has_applied):
-                return render(request,'application.html',{'message':'You have already applied to this post!'})
-        except:
+    if(request.user.type=='DEV'):
+        job = Job.objects.all().filter(id=id)
+        if(request.method == 'POST'):
+            application = Application()
             application.job_name = job[0]
             application.candidate = request.user
-            return render(request,'application.html',{'job':job[0]})
+            application.has_applied = True
+            application.save()
+            return render(request,'application.html',{'message':'Application Success!'})
+        else:
+            application = Application.objects.all().filter(job_name=job[0])
+            current_application = [i for i in application if i.candidate == request.user]
+            try:
+                if(current_application[0].has_applied):
+                    return render(request,'application.html',{'message':'You have already applied to this post!'})
+            except:
+                application.job_name = job[0]
+                application.candidate = request.user
+                return render(request,'application.html',{'job':job[0]})
+    else:
+        return HttpResponse("Unauthorised")
         
 
 @login_required
 def applied_jobs(request):
-    applications = Application.objects.all()
-    applied = []
-    for i in applications:
-        if i.candidate.username == request.user.username:
-            applied.append(i)
-    return render(request,'applied_jobs.html',{'applied':applied})
+    if(request.user.type=='DEV'):
+        applications = Application.objects.all()
+        applied = []
+        for i in applications:
+            if i.candidate.username == request.user.username:
+                applied.append(i)
+        return render(request,'applied_jobs.html',{'applied':applied})
+    else:
+        return HttpResponse("Unauthorised")
