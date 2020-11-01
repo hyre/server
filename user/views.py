@@ -99,6 +99,7 @@ def auth_logout(request):
     return redirect('home')
 
 def user_profile(request,username):
+    auth_user = request.user
     user = Dev.objects.all().filter(username=username)
     if not user.exists():
         return redirect('home')
@@ -107,7 +108,7 @@ def user_profile(request,username):
     bio = user[0].bio
     skills = user[0].skill.skill_string.split(',')
     projects = Project.objects.all().filter(user=user[0])
-    return render(request,'profile.html',{'user_base':user_base,'user':user,'bio':bio,'skills':skills,'projects':projects})
+    return render(request,'profile.html',{'user_base':user_base,'user':user,'bio':bio,'skills':skills,'projects':projects,'auth_user':auth_user})
 
 # @login_required
 # def user_profile_edit(request):
