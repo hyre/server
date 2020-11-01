@@ -1,0 +1,26 @@
+@import "colors.css";
+body {
+    background-color: var(--dark-blue);
+    overflow-x: hidden;
+}
+
+.create__wrapper {
+    margin: 2rem 0;
+}
+
+input.form-control,
+textarea.form-control {
+    background-color: rgba(78, 109, 249, 0.13);
+    border: none;
+    color: var(--yellow);
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+    background-color: rgba(78, 109, 249, 0.13);
+}
+
+.footer {
+    background-color: var(--light-blue);
+    margin-top: auto;
+}

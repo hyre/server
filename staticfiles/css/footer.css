@@ -1,0 +1,29 @@
+@import "colors.css";
+
+/* ------------------------------------------------
+Footer
+------------------------------------------------ */
+
+.footer {
+    background-color: #101935;
+    color: white;
+    padding: 2rem 0;
+}
+
+.sitemap {
+    color: #F9C80E;
+}
+
+@media (max-width:768px) {
+    .hero {
+        flex-direction: column;
+        width: 100%;
+    }
+    .profile__wrapper {
+        width: 100%;
+    }
+    .bio__heading,
+    .skills__heading {
+        text-align: center;
+    }
+}
