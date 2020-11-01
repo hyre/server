@@ -24,8 +24,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-link" href="{% url 'job-list' %}">Jobs</a>
-                <a class="nav-link" href="{% url 'applications' %}">Applied</a>
+               {% if user.type == 'DEV' %}
+               <a class="nav-link" href="{% url 'job-list' %}">Jobs</a>
+               <a class="nav-link" href="{% url 'applications' %}">Applied</a>
+               {% else %}
+               <a class="nav-link" href="{% url 'posted-jobs' %}">Posted Jobs</a>
+               {% endif %}
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </div>
         </div>
@@ -105,9 +109,11 @@
                 <h2>No Projects Yet!</h2>
             </div>
             {% endif %}
+            {% if user.type == 'DEV' %}
             <a href="{% url 'add-project' %}" class="project__add-btn">
                 <i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
             </a>
+            {% endif %}
         </div>
     </div>
 

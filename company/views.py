@@ -38,5 +38,5 @@ def posted_jobs(request):
 def view_applications(request,id):
     job = Job.objects.all().filter(id=id)
     applications = Application.objects.all().filter(job_name=job[0])
-    return render(request,'applied_devs.html',{'applications':applications})
+    return render(request,'applied_devs.html',{'applications':applications,'job':job[0]})
 

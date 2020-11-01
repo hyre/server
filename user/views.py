@@ -85,7 +85,7 @@ def auth_login(request):
                     return user_profile(request,user.username)
                 elif user.type == 'HR':
                     login(request,user)
-                    return dashboard(request,user.username)
+                    return redirect('dashboard',username=user.username)
                 else:
                     redirect('home')
             else:
