@@ -43,9 +43,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'django.contrib.sites',
     'user',
-    'company',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'whitenoise.runserver_nostatic'
+    'company'
 ]
 
 MIDDLEWARE = [
@@ -56,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'server.urls'
