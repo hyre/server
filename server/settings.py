@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'user',
     'company',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.runserver_nostatic'
 ]
 
 MIDDLEWARE = [
