@@ -19,7 +19,7 @@ def dashboard(request,username):
             return render(request,'hrdash.html',{'dev':dev,'usernames':usernames})
         return render(request, 'hrdash.html')
     else:
-        return HttpResponse("Unauthorised")
+        return render(request,'404.html')
 
 @login_required
 def post_jobs(request):
@@ -33,7 +33,7 @@ def post_jobs(request):
         form = JobForm(initial={'company':company,'posted_by':request.user})
         return render(request,'create_job.html',{'form':form})
     else:
-        return HttpResponse("Unauthorised")
+        return render(request,'404.html')
 
 
 @login_required
@@ -42,7 +42,7 @@ def posted_jobs(request):
         jobs = Job.objects.all().filter(posted_by=request.user)
         return render(request,'posted_jobs.html',{'jobs':jobs})
     else:
-        return HttpResponse("Unauthorised")
+        return render(request,'404.html')
 
 @login_required
 def view_applications(request,id):
@@ -51,5 +51,5 @@ def view_applications(request,id):
         applications = Application.objects.all().filter(job_name=job[0])
         return render(request,'applied_devs.html',{'applications':applications,'job':job[0]})
     else:
-        return HttpResponse("Unauthorised")
+        return render(request,'404.html')
 
