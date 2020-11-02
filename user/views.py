@@ -142,7 +142,7 @@ def job_apply(request,id):
                 application.candidate = request.user
                 return render(request,'application.html',{'job':job[0]})
     else:
-        return HttpResponse("Unauthorised")
+        return render(request,'404.html')
         
 
 @login_required
@@ -155,4 +155,7 @@ def applied_jobs(request):
                 applied.append(i)
         return render(request,'applied_jobs.html',{'applied':applied})
     else:
-        return HttpResponse("Unauthorised")
+        return render(request,'404.html')
+
+def error404(request,exception):
+    return render(request,'404.html',status=404)

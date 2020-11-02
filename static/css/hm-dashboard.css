@@ -1,0 +1,111 @@
+@import "colors.css";
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--dark-blue);
+}
+
+.top-section {
+    /* min-height: 30vh; */
+    padding: 2rem;
+}
+
+.buttons-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons-section a {
+    background-color: var(--light-blue);
+    padding: 2rem;
+    margin-left: 4rem;
+}
+
+.buttons-section a:hover {
+    background-color: var(--dark-blue);
+    color: var(--light-blue);
+    background: #101935;
+    box-shadow: 20px 20px 60px #060a15, -20px -20px 60px #1a2855;
+}
+
+.search-section {
+    margin: 2rem auto;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-section input {
+    background-color: rgba(78, 109, 249, 0.13);
+    outline: none;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    color: var(--yellow);
+}
+
+.search-section input:focus {
+    border: 2px var(--light-blue) solid;
+}
+
+.jobs__wrapper {
+    margin: 2rem auto 3rem auto;
+    width: 80%;
+    min-height: 60vh;
+    background-color: var(--dark-blue);
+}
+
+.jobs__heading {
+    text-align: center;
+    padding: 2rem;
+}
+
+.job {
+    width: 80%;
+    padding: 2rem;
+    margin: 1.5rem auto;
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.24);
+    transition: 0.4s ease-in;
+}
+
+.job:hover {
+    /* background-color: #6980e6; */
+    /* border-radius: 50px; */
+    background: #101935;
+    box-shadow: 20px 20px 78px #0d152b, -20px -20px 78px #131e3f;
+    color: var(--light-blue);
+}
+
+.job:hover .job__view-button {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+}
+
+.job:hover .job__view-button:hover {
+    background-color: var(--yellow);
+    color: var(--dark-blue);
+}
+
+.job__title {
+    font-weight: 600;
+}
+
+.job__view-button {
+    background-color: var(--dark-blue);
+    color: var(--light-blue);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .buttons-section a {
+        padding: 1rem;
+        margin-left: 1rem;
+    }
+    .jobs__wrapper {
+        width: 100%;
+    }
+}
