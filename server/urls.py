@@ -37,3 +37,6 @@ urlpatterns = [
     path('user/u/<username>/', user_views.user_profile, name='profile'),
     path('user/update', user_views.profile_update, name='update')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+handler404 = 'user.views.error404'
