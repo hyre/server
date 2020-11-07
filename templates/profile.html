@@ -92,6 +92,19 @@
                     {% endfor %}
                 </div>
             </div>
+            <div class="skills__wrapper">
+                <h3 class="skills__heading text-brand-yellow">Vouches</h3>
+                <div class="skills">
+                    {% if vouches %}
+                    {% for vouch in vouches %}
+                    <span class="badge text-brand-white">{{ vouch.vouched_by }}</span>
+                    {% endfor %}
+                    {% endif %}
+                    {% if auth_user.type == 'HR' %}
+                    <a href="{% url 'vouch' username=user_base.username %}" class="btn project__view-button">Vouch</a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 
