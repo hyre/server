@@ -9,7 +9,6 @@ from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from company.views import dashboard
 
-
 def home(request):
     return render(request,'index.html')
 
@@ -66,8 +65,6 @@ def add_project(request):
             return user_profile(request,request.user.username)
     form = ProjectForm(initial={'user':request.user})
     return render(request,'add_project.html',{'form':form})
-
-
 
 
 def auth_login(request):
@@ -159,3 +156,9 @@ def applied_jobs(request):
 
 def error404(request,exception):
     return render(request,'404.html',status=404)
+
+def about_us(request):
+    return render(request,'about.html')
+
+def contact_us(request):
+    return render(request,'contact-us.html')

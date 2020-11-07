@@ -23,6 +23,8 @@ from django.conf import settings
 urlpatterns = [
     path('', user_views.home,name='home'),
     path('admin/', admin.site.urls),
+    path('about-us/',user_views.about_us, name='about'),
+    path('contact-us/',user_views.contact_us,name='contact'),
     path('manage/company/u/<username>', company_views.dashboard, name='dashboard'),
     path('manage/company/create/job',company_views.post_jobs,name='create-job'),
     path('manage/company/posted',company_views.posted_jobs,name='posted-jobs'),
