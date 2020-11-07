@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from user.forms import UserCreationForm, AuthForm,BioForm, SkillForm,ProjectForm
-from user.models import Dev, Bio, Skill, Project, User
+from user.models import Dev, Bio, Skill, Project, User, Vouch
 from company.forms import ApplicationForm, HRBioForm
 from company.models import Job, Application
 from django.contrib.auth.decorators import login_required
@@ -105,7 +105,8 @@ def user_profile(request,username):
     bio = user[0].bio
     skills = user[0].skill.skill_string.split(',')
     projects = Project.objects.all().filter(user=user[0])
-    return render(request,'profile.html',{'user_base':user_base,'user':user,'bio':bio,'skills':skills,'projects':projects,'auth_user':auth_user})
+    vouches = Vouch.objects.all().filter(user=user[0])
+    return render(request,'profile.html',{'user_base':user_base,'user':user,'bio':bio,'skills':skills,'projects':projects,'auth_user':auth_user,'vouches':vouches})
 
 # @login_required
 # def user_profile_edit(request):
@@ -162,3 +163,11 @@ def about_us(request):
 
 def contact_us(request):
     return render(request,'contact-us.html')
+
+def vouchfn(request,username):
+    vouch = Vouch()
+    vouch.user = Dev.objects.all().filter(username=username)[0]
+    vouch.vouched_by = request.user
+    vouch.status = True
+    vouch.save()
+    return redirect('profile',username=username)

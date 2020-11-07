@@ -3,7 +3,7 @@ from django.contrib.auth import admin as auth_admin
 from django.contrib.auth import get_user_model
 
 from user.forms import UserChangeForm, UserCreationForm
-from user.models import Dev,Hr,Bio, Project, Skill
+from user.models import Dev,Hr,Bio, Project, Skill, Vouch
 
 User = get_user_model()
 
@@ -23,3 +23,4 @@ admin.site.register(Hr)
 admin.site.register(Bio)
 admin.site.register(Skill)
 admin.site.register(Project)
+admin.site.register(Vouch)

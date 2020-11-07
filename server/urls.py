@@ -37,6 +37,7 @@ urlpatterns = [
     path('project/add',user_views.add_project,name='add-project'),
     path('signup/', user_views.signup, name='signup'),
     path('user/u/<username>/', user_views.user_profile, name='profile'),
+    path('user/u/<username>/vouch/',user_views.vouchfn,name='vouch'),
     path('user/update', user_views.profile_update, name='update'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

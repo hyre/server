@@ -74,5 +74,7 @@ class Project(models.Model):
     def __str__(self):
         return f"{self.user} - {self.name}"
 
-
-    
+class Vouch(models.Model):
+    vouched_by = models.ForeignKey(Hr, on_delete=models.CASCADE, related_name='voucher')
+    user = models.ForeignKey(Dev, on_delete=models.CASCADE, related_name='vouchee')
+    status = models.BooleanField(default=False)
