@@ -26,32 +26,32 @@
 {% endblock %}
 {% block body %}
     <div class="create__wrapper">
-        <h1 class="text-center mt-4 text-brand-yellow text-bold">Create Profile</h1>
-        <p class="lead text-center text-light">Enter your details</p>
+        <h1 class="text-center mt-4 text-brand-dark-blue text-bold">Create Profile</h1>
+        <p class="lead text-center text-dark">Enter your details</p>
         <div class="row justify-content-center min-vh-100 px-3">
             <div class="col-lg-3 col-md-9 col-sm-12 m-auto">
                 <form class="d-flex flex-column justify-content-center" method="POST">
                     {% csrf_token %}
-                    <div class="form-group text-brand-yellow">
+                    <div class="form-group text-brand-dark-blue">
                         <label for="bio">Bio</label>
                         <textarea name="{{bio.bio.name }}" class="form-control text-white" id="bio" rows="10"></textarea>
                     </div>
-                    <div class="form-group text-brand-yellow">
+                    <div class="form-group text-brand-dark-blue">
                         <label for="name">City</label>
-                        <input type="text" class="form-control text-light" id="name" name="{{ bio.city.name }}">
+                        <input type="text" class="form-control text-dark" id="name" name="{{ bio.city.name }}">
                     </div>
 
-                    <div class="form-group text-brand-yellow">
+                    <div class="form-group text-brand-dark-blue">
                         <label for="name">Country</label>
-                        <input type="text" class="form-control text-light" id="name" name="{{ bio.country.name }}">
+                        <input type="text" class="form-control text-dark" id="name" name="{{ bio.country.name }}">
                     </div>
 
-                    <div class="form-group text-brand-yellow">
+                    <div class="form-group text-brand-dark-blue">
                         <label for="name">Age</label>
-                        <input type="number" class="form-control text-light" id="name" name="{{ bio.age.name }}">
+                        <input type="number" class="form-control text-dark" id="name" name="{{ bio.age.name }}">
                     </div>
       
-                    <div class="form-group text-brand-yellow">
+                    <div class="form-group text-brand-dark-blue">
                         <label for="skills">Skills</label>
                         <small id="skills" class="form-text text-muted">
                             Enter skills as comma(,) separated values

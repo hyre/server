@@ -28,14 +28,14 @@
 {% endblock %}
 {% block body %}
     <div class="jobs__wrapper container-fluid">
-        <h3 class="heading jobs__heading text-brand-yellow">Job</h3>
+        <h3 class="heading jobs__heading text-brand-dark-blue">Job</h3>
         <div class="job">
             <h5 class="job__title">{{ job.title }}</h5>
             <p class="job__company">{{ job.des }}</p>
         </div>
     </div>
 
-    <h3 class="heading jobs__heading text-brand-yellow">Job Applicants</h3>
+    <h3 class="heading jobs__heading text-brand-dark-blue">Job Applicants</h3>
     {% if applications %}
     <!-- In case there are no applicants, then still display the applicants__wrapper, otherwise the footer gets broken -->
     <div class="applicants__wrapper">

@@ -25,7 +25,7 @@
 {% block body %}
     <div class="container-fluid form-container min-vh-100">
         <h1 class="text-center mt-4 text-brand-light-blue">SignUp</h1>
-        <p class="lead text-center text-light">Enter your details</p>
+        <p class="lead text-center text-dark">Enter your details</p>
         <div class="row justify-content-center min-vh-100">
             <div class="col-lg-3 col-md-9 col-sm-12 m-auto">
 
@@ -33,7 +33,7 @@
                   {% csrf_token %}
                     <div class="form-group text-primary">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control text-light" id="name" name="{{ form.name.name }}">
+                        <input type="text" class="form-control text-dark" id="name" name="{{ form.name.name }}">
                     </div>
                     <div class="form-group text-primary">
                         <label for="username">Username</label>
@@ -41,7 +41,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">@</div>
                             </div>
-                            <input type="text" class="form-control text-light" id="username" aria-describedby="usernameHelp" name="{{ form.username.name }}">
+                            <input type="text" class="form-control text-dark" id="username" aria-describedby="usernameHelp" name="{{ form.username.name }}">
                         </div>
                         <small id="usernameHelp" class="form-text text-muted">
                             Letters, digits and @/./+/_ only
@@ -49,14 +49,14 @@
                     </div>
                     <div class="form-group form text-primary">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control text-light" id="exampleInputEmail1" aria-describedby="emailHelp" name="{{ form.email.name }}">
+                        <input type="email" class="form-control text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" name="{{ form.email.name }}">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with
                             anyone
                             else.</small>
                     </div>
                     <div class="form-group text-primary">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control text-light" id="exampleInputPassword1" name="{{ form.password1.name }}">
+                        <input type="password" class="form-control text-dark" id="exampleInputPassword1" name="{{ form.password1.name }}">
                         <small id="passwordHelp" class="form-text text-muted">
                             Your password can't be too similar to your other personnel information
                         </small>
@@ -72,12 +72,12 @@
                     </div>
                     <div class="form-group text-primary">
                         <label for="passwordConfirmation">Confirm Password</label>
-                        <input type="password" class="form-control text-light" id="passwordConfirmation" name="{{ form.password2.name }}">
+                        <input type="password" class="form-control text-dark" id="passwordConfirmation" name="{{ form.password2.name }}">
                     </div>
 
                     <div class="form-group text-primary justify-self-stretch">
                         <label for="inputState">Type</label>
-                        <select id="inputState" class="form-control text-light" name="{{ form.type.name }}">
+                        <select id="inputState" class="form-control text-dark" name="{{ form.type.name }}">
                           <option class="text-dark">Choose...</option>
                           {% for id, name in form.type.field.choices %}
                           <option value="{{ id }}" class="text-dark">{{ name }}</option>
