@@ -1,7 +1,7 @@
 @import "colors.css";
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--dark-blue);
+    background-color: var(--white);
 }
 
 .top-section {
@@ -23,10 +23,10 @@ body {
 }
 
 .buttons-section a:hover {
-    background-color: var(--dark-blue);
+    background-color: var(--white);
     color: var(--light-blue);
     background: #101935;
-    box-shadow: 20px 20px 60px #060a15, -20px -20px 60px #1a2855;
+    /* box-shadow: 20px 20px 60px #060a15, -20px -20px 60px #1a2855; */
 }
 
 .search-section {
@@ -43,7 +43,7 @@ body {
     border: none;
     padding: 1rem 2rem;
     border-radius: 5px;
-    color: var(--yellow);
+    color: var(--dark-blue);
 }
 
 .search-section input:focus {
@@ -51,10 +51,10 @@ body {
 }
 
 .jobs__wrapper {
-    margin: 2rem auto 3rem auto;
+    margin: 1rem auto 3rem auto;
     width: 80%;
     min-height: 60vh;
-    background-color: var(--dark-blue);
+    background-color: var(--white);
 }
 
 .jobs__heading {
@@ -72,20 +72,27 @@ body {
     transition: 0.4s ease-in;
 }
 
-.job:hover {
-    /* background-color: #6980e6; */
-    /* border-radius: 50px; */
+
+/* .job:hover {
+    background-color: #6980e6;
+    border-radius: 50px;
     background: #101935;
     box-shadow: 20px 20px 78px #0d152b, -20px -20px 78px #131e3f;
     color: var(--light-blue);
-}
+} */
 
-.job:hover .job__view-button {
+
+/* .job:hover .job__view-button {
     background-color: var(--light-blue);
     color: var(--dark-blue);
 }
 
 .job:hover .job__view-button:hover {
+    background-color: var(--yellow);
+    color: var(--dark-blue);
+} */
+
+.job__view-button:hover {
     background-color: var(--yellow);
     color: var(--dark-blue);
 }

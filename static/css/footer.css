@@ -20,9 +20,16 @@ Footer
     color: white;
     padding: 2rem 0;
 }
+
 .sitemap {
-    color: #F9C80E;
+    color: var(--dark-blue);
 }
+
+.sitemap:hover {
+    color: var(--white);
+    text-decoration: none;
+}
+
 @media (max-width:768px) {
     .hero {
         flex-direction: column;

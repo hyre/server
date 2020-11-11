@@ -2,7 +2,7 @@
     --light-blue: #4E6DF9;
     --dark-blue: #101935;
     --yellow: #F9C80E;
-    --white: #DFDFDF;
+    --white: #f7f7f7;
     --light-green: #23CE6B;
     --lighter-blue: #BAD0F5;
 }
@@ -13,6 +13,10 @@
 
 .text-brand-light-blue {
     color: var(--light-blue);
+}
+
+.text-brand-dark-blue {
+    color: var(--dark-blue);
 }
 
 .text-brand-white {

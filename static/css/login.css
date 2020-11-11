@@ -11,6 +11,14 @@ body {
     border: none;
 }
 
+.form-group input {
+    color: white;
+}
+
+.form-group input:focus {
+    color: white;
+}
+
 .text-brand-yellow {
     color: var(--yellow);
 }

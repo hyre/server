@@ -1,14 +1,14 @@
 @import "colors.css";
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--dark-blue);
+    background-color: var(--white);
 }
 
 .jobs__wrapper {
     margin: 2rem auto 3rem auto;
     width: 80%;
     min-height: 60vh;
-    background-color: var(--dark-blue);
+    background-color: var(--white);
 }
 
 .jobs__heading {
