@@ -126,7 +126,7 @@
                 <h2>No Projects Yet!</h2>
             </div>
             {% endif %}
-            {% if auth_user.type == 'DEV' %}
+            {% if auth_user.type == 'DEV' and  auth_user.username == user_base.username %}
             <a href="{% url 'add-project' %}" class="project__add-btn">
                 <i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
             </a>
