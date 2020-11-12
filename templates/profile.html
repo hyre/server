@@ -98,12 +98,15 @@
                     {% if vouches %}
                     {% for vouch in vouches %}
                     <span class="badge text-brand-white">{{ vouch.vouched_by }}</span>
+                    {% if vouch.vouched_by != user.username}
+                    <a href="{% url 'vouch' username=user_base.username %}" class="btn project__view-button">Vouch</a>
+                    {% endif %}
                     {% endfor %}
                     {% else %}
                     <span class="badge text-brand-white">No vouches yet!</span>
-                    {% endif %}
                     {% if auth_user.type == 'HR' %}
                     <a href="{% url 'vouch' username=user_base.username %}" class="btn project__view-button">Vouch</a>
+                    {% endif %}
                     {% endif %}
                 </div>
             </div>
