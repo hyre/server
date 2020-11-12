@@ -109,7 +109,8 @@ def user_profile(request,username):
     skills = user[0].skill.skill_string.split(',')
     projects = Project.objects.all().filter(user=user[0])
     vouches = Vouch.objects.all().filter(user=user[0])
-    return render(request,'profile.html',{'user_base':user_base,'user':user,'bio':bio,'skills':skills,'projects':projects,'auth_user':auth_user,'vouches':vouches})
+    vouched_hrs = [i.vouched_by for i in vouches]
+    return render(request,'profile.html',{'user_base':user_base,'user':user,'bio':bio,'skills':skills,'projects':projects,'auth_user':auth_user,'vouches':vouches,'vouched_hrs':vouched_hrs})
 
 # @login_required
 # def user_profile_edit(request):
