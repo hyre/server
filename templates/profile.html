@@ -102,7 +102,7 @@
                     {% else %}
                     <span class="badge text-brand-white">No vouches yet!</span>
                     {% if auth_user.type == 'HR' %}
-                        {% if auth_user.username not in vouched_hrs}
+                        {% if auth_user.username not in vouched_hrs %}
                         <a href="{% url 'vouch' username=user_base.username %}" class="btn project__view-button">Vouch</a>
                         {% endif %}
                     {% endif %}

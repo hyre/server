@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '7n-wkvyy##%qjx=1(vnd6wsdc*19p--!c_vl6c-m1dgqv%ykg_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['hyre-beta.herokuapp.com','127.0.0.1','hyre.dev','www.hyre.dev']
 
